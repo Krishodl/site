@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Message</title>
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background-color: white;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 100px;
+  background-color: red;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  margin: 10px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.button:hover {
+  background-color: darkred;
+  transform: scale(1.05);
+}
+
+.message {
+  display: none;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+#go-back {
+  width: 100px; /* Half the size */
+  height: 50px;
+  position: fixed;
+  bottom: 20px;
+  background-color: transparent;
+  color: black;
+  border: 2px solid black; /* Black border */
+}
+</style>
+</head>
+<body>
+
+<div id="click-me" class="button">CLICK ME</div>
+<div id="message" class="message">I LOVE YOU</div>
+<div id="go-back" class="button hidden">GO BACK</div>
+
+<script>
+document.getElementById('click-me').addEventListener('click', function() {
+  this.classList.add('hidden'); // Hide the CLICK ME box
+  document.getElementById('message').style.display = 'block'; // Show the I LOVE YOU message
+  document.getElementById('go-back').classList.remove('hidden'); // Show the GO BACK button
+});
+
+document.getElementById('go-back').addEventListener('click', function() {
+  document.getElementById('message').style.display = 'none'; // Hide the I LOVE YOU message
+  document.getElementById('click-me').classList.remove('hidden'); // Show the CLICK ME box again
+  this.classList.add('hidden'); // Hide the GO BACK button
+});
+</script>
+
+</body>
+</html>
